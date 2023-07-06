@@ -1,10 +1,9 @@
 from sentence_transformers import SentenceTransformer
 
-
 if __name__ == '__main__':
 
     #file for artifacts
-    model_artifacts_folder = "model_artifacts"
+    model_artifacts_folder = "./service_model/model_artifacts"
 
     #the sentences we would like to encode
     sentences = ["This is a coding assignment", "We are in the first task."]
@@ -14,6 +13,7 @@ if __name__ == '__main__':
 
     #its artifacts
     model.save(model_artifacts_folder)
+    #tf.saved_model.save(model, model_artifacts_folder)
 
     #Sentences are encoded by calling model.encode()
     embeddings = model.encode(sentences)
