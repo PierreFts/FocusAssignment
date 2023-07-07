@@ -5,12 +5,19 @@ services:
     build: ./service_model
     ports:
       - 5001:5001
-  # store:
-  #   image: #pull the store vector image
-  #   ports:
-  #     - 2222:2222 #to find
-  #   volumes:
-  #     -assignment: #then find where the data is put with this image. e.g. assignment:/data/db
+
+
+  store:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.8.2
+    ports:
+      - 9200:9200
+    environment:
+      - node.name=store
+      - discovery.type=single-node
+    volumes:
+      - ./service_vec_store/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml #allows to take a custom yml config for elastic search and allow simple http requests (instead of https)
+
+    #   - assignment: #then find where the data is put with this image. e.g. assignment:/data/db
   api:
     build: ./service_API
     ports:

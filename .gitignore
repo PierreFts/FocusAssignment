@@ -1,1 +1,4 @@
 embedding/model_artifacts/*
+embedding/service_model/model_artifacts/*
+embedding/old
+embedding/__pycache__
