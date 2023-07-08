@@ -24,6 +24,7 @@ if __name__ == '__main__':
         print("problem : not one vector per input")
     else:
         print("no issue")
+        
     # #further prints to see the embeddings, from the doc of hugging face
     # for sentence, embedding in zip(sentences, embeddings):
     #     print("Sentence:", sentence)

@@ -17,12 +17,7 @@ services:
     volumes:
       - ./service_vec_store/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml #allows to take a custom yml config for elastic search and allow simple http requests (instead of https)
 
-    #   - assignment: #then find where the data is put with this image. e.g. assignment:/data/db
   api:
     build: ./service_API
     ports:
       - 5002:5002
-    # environment: #to find, depends on the vector store. ex:mongodb://store
-
-# volumes:
-#   assignment:
