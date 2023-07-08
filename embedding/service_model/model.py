@@ -31,17 +31,15 @@ def transfo():
         request_source = request.headers.get('X-Request-Source')
         data = request.get_json()
         print("data ---- > ", data)
-        if request_source=="api":
+        if request_source in ["api","seed"]:
             
             results = model.encode(data)
-            #requests.post('http://api:5003/', json=results) à envoyer sur le vector store
-            #normalement ici on remplacera results par les vectors output, ici results est l'embedding de l'input!
-            print(results)
             return jsonify(results.tolist())
         elif request_source=="vect_space":
             return()
         else:
-            return("error in the request source")
+            #return("error in the request source")
+            return(request_source)
     return "Not a proper request method or data"
 
 
