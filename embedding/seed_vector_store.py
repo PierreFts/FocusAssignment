@@ -3,9 +3,10 @@ from elasticsearch.helpers import bulk
 import requests
 import json
 import time
+import random
+from faker import Faker
 
-
-
+N = 100 #number of elements we want in our store.
 dim_tot=768 #dimension of the embedded space
 # Here we define our vector space with its name and its attributes. The text attribute will be used to store the sentence corresponding to the vector.
 index_name = 'my_vectorspace'
@@ -50,7 +51,9 @@ if __name__ == '__main__':
     # print(mapping)
 
     # We now define the elements we want to seed in our vector store. Feel free to add or remove strings in that list.
-    data = ["my first example", "I hope it works", "j'aime la baguette et le vin", "je construis des igloos"]
+    faker = Faker()
+    sentences = [faker.sentence() for _ in range(N)]
+    data = sentences + ["my first example", "I hope it works", "j'aime la baguette et le vin", "je construis des igloos"]
     headers = {'X-Request-Source':'seed'}
     url = 'http://localhost:5001/'
 
